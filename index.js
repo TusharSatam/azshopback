@@ -173,8 +173,8 @@ app.post("/payment", async (req, res) => {
 
 //webhook
 
-// const endpointSecret = "whsec_vwB94gq7wxtqyIT60iGd8kbQBNrd3hQP";
-const endpointSecret = "whsec_755132c376969d82dd1d0eb59c52b3ae85afded1101eab0d60e15c3b34f4809e";
+const endpointSecret = "whsec_wqG9bmjiqY7V4B6xcttZenk1DEcoDqo0";
+// const endpointSecret = "whsec_755132c376969d82dd1d0eb59c52b3ae85afded1101eab0d60e15c3b34f4809e";
 
 // const handleStoreDatatoSanityDB=()=>{
 //   lineItems.data.map((item,i)=>{
