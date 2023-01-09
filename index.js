@@ -52,23 +52,25 @@
 //TESING BY ME
 // import Stripe from 'stripe';
 const stripe = require("stripe")(
-  "sk_test_51JBY5WSFH0H2XJ5NlXHpUUYaoSeLUMpzffxSNR0Y5nTyVUFmy3Xso2xPdIY6jUE7OhOGq18llBexkU8Xchzpu5LN00AQUyaxNl"
+  process.env.STRIPE_KEY
 );
 
 // const stripe = require('stripe')('sk_test_51JBY5WSFH0H2XJ5NlXHpUUYaoSeLUMpzffxSNR0Y5nTyVUFmy3Xso2xPdIY6jUE7OhOGq18llBexkU8Xchzpu5LN00AQUyaxNl');
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config()
 // const { client } = require("./client");
 // const { client } = require("./client");
 const app = express();
 const sanityClient =require('@sanity/client');
  const client = sanityClient({
-  projectId: 'vskyo0km',
+  projectId: process.env.STRIPE_PROJECTID,
   dataset: 'production',
   apiVersion: '2021-11-16',
   useCdn: true,
-  token: 'sk71wyNU6LlJtPXVOP1kUNAJ536DPTyEXia88r4zGCBfgv2XMVz6O154b29tPcYq7GlsljhzdbvGYz169um4nuPw5HJEpssrqbVyOuUaVMWVztJOguUfMDhheeYIpT1u6lI6qOMPWpZPjl4hZ1JQyepqOkB4y6MfJamLDD00GC9VJn9S8NAt',
+  token: process.env.STRIPE_TOKEN,
 });
+
 // --------------update related to webhook-----------------
 app.use((req, res, next) => {
   if (req.originalUrl === '/webhook') {
@@ -173,7 +175,9 @@ app.post("/payment", async (req, res) => {
 
 //webhook
 
-const endpointSecret = "whsec_wqG9bmjiqY7V4B6xcttZenk1DEcoDqo0";
+// const endpointSecret = "whsec_wqG9bmjiqY7V4B6xcttZenk1DEcoDqo0";
+const endpointSecret = process.env.STRIPE_ENDPOINTSECRET;
+
 // const endpointSecret = "whsec_755132c376969d82dd1d0eb59c52b3ae85afded1101eab0d60e15c3b34f4809e";
 
 // const handleStoreDatatoSanityDB=()=>{
